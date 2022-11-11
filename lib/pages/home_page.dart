@@ -1,6 +1,7 @@
 import 'package:countries_app/cubit/app_cubits.dart';
 import 'package:countries_app/cubit/app_cubits_logic.dart';
 import 'package:countries_app/cubit/app_cubits_states.dart';
+import 'package:countries_app/internals/country_model.dart';
 import 'package:countries_app/internals/data_service.dart';
 import 'package:countries_app/misc/global.dart';
 import 'package:countries_app/widgets/logo_text.dart';
@@ -45,16 +46,16 @@ class _HomePageState extends State<HomePage> {
       ),
       body: BlocBuilder<AppCubits, CubitStates>(builder: (context, state) {
         if (state is HomePageState) {
-          var countries = state.countries;
+          List<Country> countries = state.countries;
           //print("HomePage First Item: ${countries[0].capital}");
           return Container(
             height: double.maxFinite,
-            padding: const EdgeInsets.only(left: 10.0, right: 10.0, top: 3.0),
-            color: Colors.red,
+            padding:
+                const EdgeInsets.only(/* left: 10.0, right: 10.0, */ top: 3.0),
             child: Column(
               children: [
                 Container(
-                  color: Colors.green,
+                  padding: const EdgeInsets.only(left: 10.0, right: 10.0),
                   child: SearchBar(
                     hintText: "Search Country",
                     prefixIcon: Icon(Icons.search, size: 22),
@@ -62,7 +63,7 @@ class _HomePageState extends State<HomePage> {
                 ),
                 SizedBox(height: 10),
                 Container(
-                  color: Colors.purple,
+                  padding: const EdgeInsets.only(left: 10.0, right: 10.0),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -80,14 +81,36 @@ class _HomePageState extends State<HomePage> {
                 SizedBox(height: 15),
                 Expanded(
                   child: Container(
-                    color: Colors.purple,
                     child: OrderedListView(
-                      children: List.generate(
-                        200,
-                        (index) => Text(
-                          (index + 1).toString(),
-                        ),
-                      ),
+                      children: List.generate(5, (index) {
+                        var currentCountry = countries[index];
+
+                        return ListTile(
+                          leading: Container(
+                            width: 65,
+                            height: 65,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10),
+                              image: DecorationImage(
+                                fit: BoxFit.contain,
+                                image: NetworkImage(
+                                  currentCountry.flags!["png"].toString(),
+                                ),
+                              ),
+                            ),
+                          ),
+                          horizontalTitleGap: 24,
+                          title: Text(
+                            currentCountry.officialName!,
+                            style: TextStyle(
+                              color:
+                                  Theme.of(context).textTheme.overline!.color,
+                              fontSize: 15,
+                            ),
+                          ),
+                          subtitle: Text(currentCountry.capital!.first),
+                        );
+                      }),
                     ),
                   ),
                 ),

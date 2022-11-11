@@ -12,6 +12,7 @@ class DataService {
       if (res.statusCode == 200) {
         print("Connected");
         List<dynamic> list = json.decode(res.body);
+        //list.removeLast();
         print("List Length: ${list.length}");
         return list.map((e) => Country.fromJson(e)).toList();
       } else {

@@ -35,7 +35,7 @@ class _SearchBarState extends State<SearchBar> {
     return Container(
       color: currentTheme.isDark
           ? Theme.of(context).canvasColor.withOpacity(0.7)
-          : Color.fromARGB(255, 3, 67, 244).withOpacity(0.4),
+          : Color.fromARGB(255, 15, 78, 151).withOpacity(0.1),
       height: 40,
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
