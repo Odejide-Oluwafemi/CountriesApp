@@ -47,6 +47,7 @@ class _HomePageState extends State<HomePage> {
       body: BlocBuilder<AppCubits, CubitStates>(builder: (context, state) {
         if (state is HomePageState) {
           List<Country> countries = state.countries;
+
           //print("HomePage First Item: ${countries[0].capital}");
           return Container(
             height: double.maxFinite,
@@ -69,11 +70,11 @@ class _HomePageState extends State<HomePage> {
                     children: [
                       MyBottomSheet(
                         text: "EN",
-                        icon: Icon(Icons.favorite, size: 24),
+                        icon: Icon(Icons.language_rounded, size: 26),
                       ),
                       MyBottomSheet(
                         text: "Filter",
-                        icon: Icon(Icons.favorite, size: 24),
+                        icon: Icon(Icons.filter_alt_outlined, size: 26),
                       ),
                     ],
                   ),
@@ -82,9 +83,9 @@ class _HomePageState extends State<HomePage> {
                 Expanded(
                   child: Container(
                     child: OrderedListView(
-                      children: List.generate(5, (index) {
+                      children: List.generate(10, (index) {
                         var currentCountry = countries[index];
-
+                        //print(currentCountry.flags!["png"].toString());
                         return ListTile(
                           leading: Container(
                             width: 65,
@@ -94,6 +95,7 @@ class _HomePageState extends State<HomePage> {
                               image: DecorationImage(
                                 fit: BoxFit.contain,
                                 image: NetworkImage(
+                                  //countries[0].coatOfArms!["png"].toString()
                                   currentCountry.flags!["png"].toString(),
                                 ),
                               ),

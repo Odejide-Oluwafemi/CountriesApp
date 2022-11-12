@@ -20,8 +20,8 @@ class AppCubits extends Cubit<CubitStates> {
       print("API call finished");
       print("AppCubitLength: ${countries.length}");
       print("Emitting HomePageState");
-      //emit(HomePageState(countries));
-      emit(DetailPageState(countries[0]));
+      emit(HomePageState(countries));
+      // emit(DetailPageState(countries[0]));
     } catch (e) {}
   }
 
