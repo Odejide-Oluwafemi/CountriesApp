@@ -59,8 +59,7 @@ class DetailPage extends StatelessWidget {
 
     List<String> images = [
       country.flags!["png"],
-      country.coatOfArms!["png"],
-      country.flags!["png"].toString(),
+      country.coatOfArms!["png"].toString(),
     ];
 
     return Scaffold(
