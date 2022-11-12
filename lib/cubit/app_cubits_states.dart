@@ -19,3 +19,10 @@ class HomePageState extends CubitStates {
   @override
   List<Object> get props => [countries];
 }
+
+class DetailPageState extends CubitStates {
+  final Country country;
+  DetailPageState(this.country);
+  @override
+  List<Object> get props => [country];
+}

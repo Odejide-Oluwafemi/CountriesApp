@@ -7,6 +7,8 @@ class Country {
   final bool? isUNMember;
   final Map<String, dynamic>? currency;
   final Map<String, dynamic>? flags;
+  final Map<String, dynamic>? maps;
+  final Map<String, dynamic>? coatOfArms;
   final List<dynamic>? continents;
   final List<dynamic>? timezones;
   final Map<String, dynamic>? languages;
@@ -25,6 +27,8 @@ class Country {
     required this.isUNMember,
     required this.currency,
     required this.flags,
+    required this.maps,
+    required this.coatOfArms,
     required this.continents,
     required this.timezones,
     required this.languages,
@@ -48,6 +52,8 @@ class Country {
       isUNMember: json["unMember"],
       currency: json["currencies"],
       flags: json["flags"],
+      maps: json["maps"],
+      coatOfArms: json["coatOfArms"],
       continents: json["continents"],
       timezones: json["timezones"],
       languages: json["languages"],

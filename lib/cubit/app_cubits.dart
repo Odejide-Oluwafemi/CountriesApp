@@ -1,5 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:countries_app/cubit/app_cubits_states.dart';
+import 'package:countries_app/internals/country_model.dart';
 import 'package:countries_app/internals/data_service.dart';
 
 class AppCubits extends Cubit<CubitStates> {
@@ -19,11 +20,16 @@ class AppCubits extends Cubit<CubitStates> {
       print("API call finished");
       print("AppCubitLength: ${countries.length}");
       print("Emitting HomePageState");
-      emit(HomePageState(countries));
+      //emit(HomePageState(countries));
+      emit(DetailPageState(countries[0]));
     } catch (e) {}
   }
 
   homePage() {
     emit(HomePageState(countries));
+  }
+
+  detailPage(Country country) {
+    emit(DetailPageState(country));
   }
 }

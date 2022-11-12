@@ -1,3 +1,4 @@
+import 'package:countries_app/pages/detail_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:countries_app/cubit/app_cubits.dart';
@@ -20,6 +21,8 @@ class _AppCubitLogics extends State<AppCubitLogics> {
           return HomePage();
         } else if (state is LoadingState) {
           return const Center(child: CircularProgressIndicator());
+        } else if (state is DetailPageState) {
+          return DetailPage(state.country);
         } else {
           return Container(color: Colors.red);
         }

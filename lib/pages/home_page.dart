@@ -109,6 +109,8 @@ class _HomePageState extends State<HomePage> {
                             ),
                           ),
                           subtitle: Text(currentCountry.capital!.first),
+                          onTap: () => BlocProvider.of<AppCubits>(context)
+                              .detailPage(currentCountry),
                         );
                       }),
                     ),
